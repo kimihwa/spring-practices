@@ -4,7 +4,27 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	<display-name>emaillist03</display-name>
+	
+	<!-- Encoding Filter -->
+	<filter>
+   <filter-name>encodingFilter</filter-name>
+   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+   <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+   </init-param>
 
+   <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+   </init-param>
+	</filter>  
+   
+	<filter-mapping>
+	   <filter-name>encodingFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- Context Parameter(Application 전역변수) -->
 	<context-param>
 	     <param-name>contextConfigLocation</param-name>
