@@ -10,7 +10,20 @@ import java.util.List;
 
 import com.bitacademy.guestbook.vo.GuestbookVo;
 
-public class GuestbookDao {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.bitacademy.guestbook.vo.GuestbookVo;
+
+@Repository
+public class GuestbookRepository {
 	public Boolean deleteByNoAndPassword(Long no, String password) {
 		boolean result = false;
 		
@@ -147,7 +160,7 @@ public class GuestbookDao {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			String url = "jdbc:mariadb://192.168.100.53:3306/webdb?charset=utf8";
+			String url = "jdbc:mariadb://192.168.0.155:3306/webdb?charset=utf8";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패:" + e);
